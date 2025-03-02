@@ -5,9 +5,15 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
+
+alias ls='ls --color=auto -Fhla --group-directories-first'
+alias grep='grep --color=auto'
+alias vi='nvim'
+
+# -----
+
+export EDITOR=nvim
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
@@ -20,8 +26,3 @@ case ":$PATH:" in
 *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-alias vi='nvim'
-export EDITOR=nvim
-
-alias ls='ls --color=auto -Fhla --group-directories-first'

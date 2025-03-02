@@ -20,3 +20,8 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Super><Sh
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Super><Shift>3']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Super><Shift>4']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Super><Shift>5']"
+
+# Set Alt+number shortcuts for dock items 1-10
+for i in {1..9}; do
+  gsettings set org.gnome.shell.keybindings switch-to-application-$i "['<Alt>$i']"
+done
