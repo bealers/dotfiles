@@ -3,7 +3,9 @@
 ```bash
 # install terminal goodness
 sudo pacman -S alacritty zellij starship 
-sudo pacman -S neovim
+
+# apps
+sudo pacman -S neovim stow
 
 cd ~/.local
 git clone git@github.com:bealers/dotfiles.git
@@ -14,9 +16,12 @@ stow -t ~ bash
 stow -t ~ alacritty
 stow -t ~ starship
 
+# todo
+# neovim
+
 # enables JetBrains mono Nerdfont
 stow -v fonts && fc-cache -fv
 
-# keyboard shortcuts``
+# keyboard shortcuts
 ./bin/gnome-settings.sh
 ```
