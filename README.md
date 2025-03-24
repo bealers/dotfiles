@@ -5,7 +5,7 @@
 sudo pacman -S alacritty zellij starship 
 
 # apps
-sudo pacman -S neovim stow
+sudo pacman -S neovim stow appimagelauncher
 
 cd ~/.local
 git clone git@github.com:bealers/dotfiles.git
@@ -15,6 +15,7 @@ cd dotfiles
 stow -t ~ bash
 stow -t ~ alacritty
 stow -t ~ starship
+stow -t ~ appimagelauncher
 
 # todo
 # neovim
