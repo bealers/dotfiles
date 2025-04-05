@@ -1,9 +1,15 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto -Fhla --group-directories-first'
+#alias ls='ls --color=auto -Fhla --group-directories-first'
+alias ls='lsd -Flh'
+alias cat='bat'
+
 alias grep='grep --color=auto'
+
 alias vi='nvim'
+alias vim='nvim'
+alias nano='nvim'
 
 # more to come here
 alias ddt='ddev exec tail -f storage/logs/laravel.log'
@@ -12,16 +18,16 @@ alias ddt='ddev exec tail -f storage/logs/laravel.log'
 
 export EDITOR=nvim
 
-# verbose intentially
 export PATH="$PATH:/home/bealers/.local/bin"
 export PATH="$PATH:/home/bealers/.config/composer/vendor/bin/"
 export PATH="$PATH:/home/bealers/.foundry/bin"
 
+#nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-# pnpm
+# pnpm, may delete
 export PNPM_HOME="/home/bealers/.local/share/pnpm"
 case ":$PATH:" in
 *":$PNPM_HOME:"*) ;;
