@@ -22,7 +22,7 @@ cd dotfiles
 ```bash 
 # set up the symlinks for each one
 stow -t ~ bash
-stow -t ~ neovim
+stow -t ~ nvim
 stow -t ~ alacritty
 stow -t ~ starship
 ```
