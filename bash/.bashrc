@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 #alias ls='ls --color=auto -Fhla --group-directories-first'
-alias ls='lsd -Flh'
+alias ls='lsd -Flha'
 alias cat='bat'
 
 alias grep='grep --color=auto'
