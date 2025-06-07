@@ -1,1 +1,11 @@
- 
+{
+  "mcpServers": {
+    "todoist": {
+      "command": "node",
+      "args": ["/home/bealers/.nvm/versions/node/v23.3.0/lib/node_modules/@abhiz123/todoist-mcp-server/dist/index.js"],
+      "env": {
+        "TODOIST_API_TOKEN": "YOUR_TODOIST_API_TOKEN_HERE"
+      }
+    }
+  }
+} 
