@@ -26,6 +26,7 @@ stow -t ~ nvim
 stow -t ~ alacritty
 stow -t ~ starship
 stow -t ~ claude-desktop
+stow -t ~ cursor
 ```
 
 ```bash 
