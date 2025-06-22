@@ -21,6 +21,7 @@ export EDITOR=nvim
 export PATH="$PATH:/home/bealers/.local/bin"
 export PATH="$PATH:/home/bealers/.config/composer/vendor/bin/"
 export PATH="$PATH:/home/bealers/.foundry/bin"
+export PATH="$PATH:/home/bealers/.bun/bin"
 
 #nvm
 export NVM_DIR="$HOME/.nvm"
