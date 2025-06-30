@@ -22,6 +22,9 @@ git checkout macos
 brew install bash
 brew install starship
 
+# Fonts
+brew install --cask font-jetbrains-mono-nerd-font
+
 # Add bash to allowed shells and set as default
 echo "/opt/homebrew/bin/bash" | sudo tee -a /etc/shells
 chsh -s /opt/homebrew/bin/bash
@@ -48,7 +51,7 @@ After setting bash as your default shell, restart your terminal or open a new se
 
 ## Next Steps
 
-- [ ] Install fonts
+- [x] Install fonts
 - [ ] Install additional tools (lsd, bat, fzf, tldr, zellij)
 - [ ] Configure Alacritty
 - [ ] Set up Neovim
@@ -57,4 +60,5 @@ After setting bash as your default shell, restart your terminal or open a new se
 
 - This setup uses bash 5.2+ from Homebrew instead of the default macOS bash 3.2
 - All tools are installed via Homebrew for easy updates
-- The `macos` branch contains macOS-specific configurations 
+- The `macos` branch contains macOS-specific configurations
+- Fonts are installed via Homebrew cask for easy updates 
