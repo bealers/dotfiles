@@ -74,15 +74,18 @@ npm install -g @abhiz123/todoist-mcp-server
 
 After setting bash as your default shell, restart your terminal or open a new session to see the changes.
 
-### 7. Sign in to 1Password CLI (optional)
+### 7. Sign in to 1Password CLI
 
 ```bash
 # Sign in to your 1Password account
-op signin
+eval $(op signin)
 
 # Test the integration
+op account list
 op --help
 ```
+
+**Note:** The `eval $(op signin)` command will prompt you for your 1Password account details and authenticate you. This is required for the shell integration to work properly.
 
 ## Installed Tools
 
@@ -126,6 +129,41 @@ it means the terminal can't find the font family. Try the following steps:
    brew install --cask font-jetbrains-mono-nerd-font
    ```
 5. **Restart Ghostty after each change.**
+
+## 1Password Troubleshooting
+
+If you encounter issues with 1Password integration:
+
+1. **Check if 1Password CLI is installed:**
+   ```bash
+   which op
+   op --version
+   ```
+
+2. **Sign in to 1Password CLI:**
+   ```bash
+   eval $(op signin)
+   ```
+
+3. **Verify your account is active:**
+   ```bash
+   op account list
+   ```
+
+4. **Test shell integration:**
+   ```bash
+   # Start a new shell session
+   bash
+   # Try tab completion with op commands
+   op <TAB>
+   ```
+
+5. **Check 1Password configuration:**
+   ```bash
+   cat ~/.config/op/config
+   ```
+
+6. **If you get permission errors, ensure the 1Password app is running and you're signed in there too.**
 
 ## Next Steps
 

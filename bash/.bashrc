@@ -52,7 +52,16 @@ bind '"\e[B": history-search-forward'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # 1Password shell integration
-eval "$(op completion bash)" 2>/dev/null
+if command -v op &> /dev/null; then
+    # Check if op is signed in
+    if op account list &> /dev/null; then
+        eval "$(op completion bash)" 2>/dev/null
+        # Enable 1Password shell integration
+        eval "$(op completion bash)" 2>/dev/null
+    else
+        echo "1Password CLI is installed but not signed in. Run 'eval \$(op signin)' to sign in."
+    fi
+fi
 
 # Enable Starship prompt
 eval "$(starship init bash)"
