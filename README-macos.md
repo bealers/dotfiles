@@ -56,11 +56,22 @@ stow -t ~ 1password
 stow -t ~ cursor
 ```
 
-### 5. Restart your terminal
+### 5. Configure Cursor MCP (optional)
+
+```bash
+# Install MCP servers if needed
+npm install -g @abhiz123/todoist-mcp-server
+
+# Edit the MCP configuration with your API keys
+# The template is at ~/.cursor/mcp.json
+# Update paths and API keys as needed
+```
+
+### 6. Restart your terminal
 
 After setting bash as your default shell, restart your terminal or open a new session to see the changes.
 
-### 6. Sign in to 1Password CLI (optional)
+### 7. Sign in to 1Password CLI (optional)
 
 ```bash
 # Sign in to your 1Password account
@@ -88,6 +99,8 @@ op --help
 - [x] Install fonts
 - [x] Install additional tools (lsd, bat, fzf, tldr, zellij)
 - [x] Install 1Password CLI
+- [x] Set up Cursor MCP configuration
+- [ ] Test complete setup
 - [ ] Configure Alacritty
 - [ ] Set up Neovim
 
@@ -98,4 +111,5 @@ op --help
 - The `macos` branch contains macOS-specific configurations
 - Fonts are installed via Homebrew cask for easy updates
 - fzf is configured with shell integration for fuzzy finding
-- 1Password CLI provides shell integration and command line access 
+- 1Password CLI provides shell integration and command line access
+- Cursor MCP configuration uses template files - update with your actual API keys 
