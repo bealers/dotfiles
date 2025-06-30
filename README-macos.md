@@ -26,6 +26,9 @@ brew install starship
 # Terminal utilities
 brew install lsd bat fzf tldr zellij neovim stow
 
+# Terminal emulator
+brew install --cask ghostty
+
 # 1Password CLI
 brew install --cask 1password-cli
 
@@ -50,7 +53,7 @@ chsh -s /opt/homebrew/bin/bash
 # Set up the symlinks for each component
 stow -t ~ bash
 stow -t ~ starship
-stow -t ~ alacritty
+stow -t ~ ghostty
 stow -t ~ nvim
 stow -t ~ 1password
 stow -t ~ cursor
@@ -93,6 +96,36 @@ op --help
 - **neovim** - Modern vim
 - **stow** - Symlink manager for dotfiles
 - **1password-cli** - Command line access to 1Password
+- **ghostty** - Fast, modern terminal emulator
+
+## Font Troubleshooting
+
+If you see a warning like:
+```
+[WARN] Unable to load specified font ... falling back to Menlo
+```
+it means the terminal can't find the font family. Try the following steps:
+
+1. **For Ghostty, try these common family names:**
+   ```lua
+   font-family = JetBrainsMono Nerd Font Mono
+   -- or
+   font-family = JetBrainsMono Nerd Font
+   -- or
+   font-family = JetBrainsMonoNL Nerd Font Mono
+   ```
+2. **Find the exact family name:**
+   - Run: `ghostty +list-fonts | grep -i jetbrains`
+   - Use the family name shown.
+3. **Validate fonts in Font Book:**
+   - Open Font Book, search for "JetBrains", and check the "Family" name.
+   - Right-click and choose "Validate Font" to check for errors.
+4. **Reinstall the font if needed:**
+   ```bash
+   brew uninstall --cask font-jetbrains-mono-nerd-font
+   brew install --cask font-jetbrains-mono-nerd-font
+   ```
+5. **Restart Ghostty after each change.**
 
 ## Next Steps
 
@@ -100,8 +133,8 @@ op --help
 - [x] Install additional tools (lsd, bat, fzf, tldr, zellij)
 - [x] Install 1Password CLI
 - [x] Set up Cursor MCP configuration
+- [x] Install and configure Ghostty
 - [ ] Test complete setup
-- [ ] Configure Alacritty
 - [ ] Set up Neovim
 
 ## Notes
@@ -112,4 +145,5 @@ op --help
 - Fonts are installed via Homebrew cask for easy updates
 - fzf is configured with shell integration for fuzzy finding
 - 1Password CLI provides shell integration and command line access
-- Cursor MCP configuration uses template files - update with your actual API keys 
+- Cursor MCP configuration uses template files - update with your actual API keys
+- Ghostty provides fast, modern terminal emulation with excellent font support 
