@@ -1,0 +1,18 @@
+# 1Password CLI configuration for macOS
+# IMPORTANT: This file should be copied to ~/.config/op/config manually
+# 1Password CLI doesn't allow symbolic links for security reasons
+# 
+# To use this config:
+# cp 1password/.config/op/config ~/.config/op/config
+
+# Default account (you'll need to update this after signing in)
+# account = "your-account-name"
+
+# Enable shell integration
+shell_integration = true
+
+# Enable automatic session management
+session_timeout = 30m
+
+# Enable biometric unlock (if available)
+biometric_unlock = true 
