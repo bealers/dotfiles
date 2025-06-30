@@ -16,6 +16,6 @@ bindings = [
 ]
 
 [font]
-normal = { family = "JetBrainsMono NFP", style = "Medium" }
-bold = { family = "JetBrainsMono NFP", style = "Bold" }
-italic = { family = "JetBrainsMono NFP", style = "Medium Italic" }
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
