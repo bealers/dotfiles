@@ -51,5 +51,8 @@ bind '"\e[B": history-search-forward'
 # fzf integration
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# 1Password shell integration
+eval "$(op completion bash)" 2>/dev/null
+
 # Enable Starship prompt
 eval "$(starship init bash)"

@@ -4,6 +4,7 @@
 
 - Homebrew installed
 - Git installed
+- 1Password app installed
 
 ## Installation Steps
 
@@ -24,6 +25,9 @@ brew install starship
 
 # Terminal utilities
 brew install lsd bat fzf tldr zellij neovim stow
+
+# 1Password CLI
+brew install --cask 1password-cli
 
 # Fonts
 brew install --cask font-jetbrains-mono-nerd-font
@@ -56,6 +60,16 @@ stow -t ~ cursor
 
 After setting bash as your default shell, restart your terminal or open a new session to see the changes.
 
+### 6. Sign in to 1Password CLI (optional)
+
+```bash
+# Sign in to your 1Password account
+op signin
+
+# Test the integration
+op --help
+```
+
 ## Installed Tools
 
 - **bash** - Modern bash shell (5.2+)
@@ -67,11 +81,13 @@ After setting bash as your default shell, restart your terminal or open a new se
 - **zellij** - Terminal multiplexer
 - **neovim** - Modern vim
 - **stow** - Symlink manager for dotfiles
+- **1password-cli** - Command line access to 1Password
 
 ## Next Steps
 
 - [x] Install fonts
 - [x] Install additional tools (lsd, bat, fzf, tldr, zellij)
+- [x] Install 1Password CLI
 - [ ] Configure Alacritty
 - [ ] Set up Neovim
 
@@ -81,4 +97,5 @@ After setting bash as your default shell, restart your terminal or open a new se
 - All tools are installed via Homebrew for easy updates
 - The `macos` branch contains macOS-specific configurations
 - Fonts are installed via Homebrew cask for easy updates
-- fzf is configured with shell integration for fuzzy finding 
+- fzf is configured with shell integration for fuzzy finding
+- 1Password CLI provides shell integration and command line access 
