@@ -50,7 +50,15 @@ eval $(op signin)
 op account list
 ```
 
-### 6. Set up SSH for GitHub
+### 6. Set up MCP config (Cursor)
+```bash
+# Copy the template and fill in your secrets:
+cp ~/.cursor/mcp.dist.json ~/.cursor/mcp.json
+# Edit ~/.cursor/mcp.json and add your API keys and tokens.
+# mcp.json is gitignored and should never be committed.
+```
+
+### 7. Set up SSH for GitHub
 ```bash
 # (If using 1Password SSH agent, ensure it's enabled in 1Password settings)
 # If using a dumped key, copy it to ~/.ssh/id_rsa and set permissions:
@@ -63,7 +71,7 @@ cat ~/.ssh/id_rsa.pub
 git remote set-url origin git@github.com:bealers/dotfiles.git
 ```
 
-### 7. Install and configure Ghostty
+### 8. Install and configure Ghostty
 - Ghostty is installed via Homebrew. Launch it and configure as needed.
 - Font troubleshooting: If you see font warnings, check the font family in Ghostty's config and use `ghostty +list-fonts | grep -i jetbrains` to find the correct name.
 
@@ -71,4 +79,3 @@ git remote set-url origin git@github.com:bealers/dotfiles.git
 - Alacritty config has been archived in this branch.
 - All tools are installed via Homebrew for easy updates.
 - 1Password CLI and SSH agent integration are recommended for secure SSH key management.
-- If you encounter issues with 1Password SSH agent, see the 1Password support site or use a standard SSH key in `~/.ssh` as a fallback. 
