@@ -8,18 +8,42 @@ Two branches:
 
 ### Prerequisites
 
-These dotfiles clone via SSH. Before running the bootstrap script you need SSH agent forwarding enabled from your local machine.
+These dotfiles clone via SSH. You need SSH agent forwarding from your local machine so GitHub auth works on the server without copying keys there.
 
-On your laptop, add to `~/.ssh/config`:
+**1. Ensure 1Password SSH agent is running on your laptop**
+
+In 1Password: **Settings → Developer → SSH Agent** — must be enabled.
+
+Make sure your shell has the agent socket exported. Add to your laptop's `~/.bashrc` if not already present:
+
+```bash
+export SSH_AUTH_SOCK=/home/bealers/.1password/agent.sock
+```
+
+Verify it's working:
+
+```bash
+ssh-add -l
+# Should list your keys
+```
+
+**2. Add ForwardAgent to your laptop's `~/.ssh/config`**
 
 ```
+Host *
+  IdentityAgent /home/bealers/.1password/agent.sock
+
 Host <server-ip>
     ForwardAgent yes
 ```
 
-1Password is used as the SSH agent on the local machine. Make sure the 1Password SSH agent is enabled (**Settings → Developer → SSH Agent**) and you're connected to the server via a session that has forwarding active.
+**3. Always SSH in with `-A`**
 
-Test it's working from the server:
+```bash
+ssh -A bealers@<server-ip>
+```
+
+Then verify forwarding works from the server:
 
 ```bash
 ssh -T git@github.com
@@ -28,10 +52,13 @@ ssh -T git@github.com
 
 ### Bootstrap
 
-Run this once on a fresh Ubuntu 24.04 LXC container as your normal user (with sudo):
+Once SSHed in with `-A`, run:
 
 ```bash
-curl -sS https://raw.githubusercontent.com/bealers/dotfiles/ubuntu-server/scripts/bootstrap-ubuntu-server.sh | bash
+sudo apt-get update -qq && sudo apt-get install -y git
+mkdir -p ~/.local
+git clone -b ubuntu-server git@github.com:bealers/dotfiles.git ~/.local/dotfiles
+bash ~/.local/dotfiles/scripts/ubuntu-server-init.sh
 ```
 
 Then reload your shell:
@@ -60,7 +87,6 @@ Neovim (LazyVim) will install its plugins on first launch — just run `nvim` an
 ```bash
 cd ~/.local/dotfiles
 git pull
-cd ~/.local/dotfiles
 stow -t ~ bash
 stow -t ~ nvim
 stow -t ~ starship
