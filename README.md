@@ -1,54 +1,67 @@
-# Bealers' dotfiles 
+# Bealers' dotfiles
 
-```bash 
-# terminal, window manager & prompt
-sudo pacman -S alacritty zellij starship
+Two branches:
+- `master` — Arch/desktop (Omarchy), manual setup
+- `ubuntu-server` — Ubuntu 24.04 LXC containers, scripted setup (you are here)
 
-# replacements
-sudo pacman -S lsd bat
+## Ubuntu server setup
 
-# apps
-sudo pacman -S neovim stow
+### Prerequisites
 
-yay -S appimagelauncher 1password cheat tldr
+These dotfiles clone via SSH. Before running the bootstrap script you need SSH agent forwarding enabled from your local machine.
+
+On your laptop, add to `~/.ssh/config`:
+
+```
+Host <server-ip>
+    ForwardAgent yes
 ```
 
-```bash 
-cd ~/.local
-git clone git@github.com:bealers/dotfiles.git
-cd dotfiles
+1Password is used as the SSH agent on the local machine. Make sure the 1Password SSH agent is enabled (**Settings → Developer → SSH Agent**) and you're connected to the server via a session that has forwarding active.
+
+Test it's working from the server:
+
+```bash
+ssh -T git@github.com
+# Should return: Hi bealers! You've authenticated...
 ```
 
-```bash 
-# set up the symlinks for each one
+### Bootstrap
+
+Run this once on a fresh Ubuntu 24.04 LXC container as your normal user (with sudo):
+
+```bash
+curl -sS https://raw.githubusercontent.com/bealers/dotfiles/ubuntu-server/scripts/bootstrap-ubuntu-server.sh | bash
+```
+
+Then reload your shell:
+
+```bash
+source ~/.bashrc
+```
+
+Neovim (LazyVim) will install its plugins on first launch — just run `nvim` and wait for it to complete.
+
+### What gets installed
+
+- `neovim` (latest, via tarball)
+- `lsd` (ls replacement)
+- `bat` (cat replacement)
+- `starship` (prompt)
+
+### What gets stowed
+
+- `bash/` — `.bashrc` with aliases, editor exports, starship init
+- `nvim/` — LazyVim config
+- `starship/` — prompt config
+
+### Updating
+
+```bash
+cd ~/.local/dotfiles
+git pull
+cd ~/.local/dotfiles
 stow -t ~ bash
 stow -t ~ nvim
-stow -t ~ alacritty
 stow -t ~ starship
-stow -t ~ claude-desktop
-stow -t ~ cursor
-```
-
-```bash 
-stow -t ~ appimagelauncher
-systemctl --user enable appimagelauncherd
-systemctl --user start appimagelauncherd
-systemctl --user status appimagelauncherd
-```
-
-```bash 
-stow -t ~ 1password
-systemctl --user enable 1password.service
-systemctl --user start 1password.service
-systemctl --user status 1password.service
-```
-
-```bash 
-# enable JetBrains mono Nerdfont
-stow -t ~ fonts && fc-cache -fv
-```
-
-```bash 
-# keyboard shortcuts
-./bin/gnome-settings.sh
 ```
