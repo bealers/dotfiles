@@ -47,6 +47,8 @@ else
     git clone -b "$DOTFILES_BRANCH" "$DOTFILES_REPO" "$DOTFILES_DIR"
 fi
 
+rm -f ~/.bashrc ~/.bash_profile
+
 echo "==> Stowing dotfiles..."
 cd "$DOTFILES_DIR"
 stow -t ~ bash
